@@ -1,0 +1,22 @@
+name: shell commands
+
+
+on: [push]
+
+
+jobs:
+  run-shell-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: cloning repository
+        uses: actions/checkout@v3 #checks out the code and clones it inside the VM it, shoud always be the fist step
+      - name: echo string
+        run: echo "Hello World" # "run" is used to pass a command in the shell
+      - name: multi string
+        run: |
+          mkdir success
+      - name: python command
+        run: |
+          import platform
+          print(platform.processor())
+        shell: python
