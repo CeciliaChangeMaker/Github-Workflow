@@ -17,13 +17,13 @@ jobs:
        with:
          terraform_version: 1.1.9
      - name: Initialiing terraform
-        run: terraform init
+       run: terraform init
      - name: Validating manifests
-        run: terraform validate
+       run: terraform validate
      - name: Formating manifests
-        run: terraform fmt -check
+       run: terraform fmt -check
      - name: planing resources creation
-        run: terraform plan
+       run: terraform plan
      - name: Creating resources
-        run: terraform apply
+       run: terraform apply
 
