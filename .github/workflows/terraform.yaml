@@ -1,0 +1,29 @@
+name: Terraform
+
+on: [push]
+env:
+  AWS_ACCESS_KEY_ID: ${{ secret.ACCESS_KEY }}
+  AWS_SECRET_ACCESS_KEY: ${{ secret.SECRET_ACCESS_KEY }}
+
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+     - name: checkout
+       uses: actions/checkout@v3
+     - name: Setup Terraform
+       uses: hashicorp/set-terraform@v2
+       with:
+         terraform_version: 1.1.9
+     - name: Initialiing terraform
+        run: terraform init
+     - name: Validating manifests
+        run: terraform validate
+     - name: Formating manifests
+        run: terraform fmt -check
+     - name: planing resources creation
+        run: terraform plan
+     - name: Creating resources
+        run: terraform apply
+
