@@ -20,7 +20,8 @@ jobs:
           import platform
           print(platform.processor())
         shell: python
-    run-windows-commands:
+
+  run-windows-commands:
     runs-on: windows-latest
     needs: ["run-shell-command"] #just to create the dependency to the first task in order for the workflow to be ran in series not in parallel
     steps:
